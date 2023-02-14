@@ -18,9 +18,7 @@ You can then run `helm search repo flam-flam` to see the charts.
 
 ## Charts
 
-### `example`
-
-Example helm chart, only used as an illustration and for testing the CI pipeline.
+_none yet_
 
 
 ## Docker compose
