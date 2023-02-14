@@ -1,0 +1,88 @@
+---
+name: Lint and Test
+
+on: 
+  pull_request:
+    paths:
+      - 'charts/**'
+
+env:
+  HELM_VERSION: v3.9.1
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Set up Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: ${{ env.HELM_VERSION }}
+      - name: Helm lint
+        run: |-
+          CHART_DIRS="$(git diff --find-renames --name-only "$(git rev-parse --abbrev-ref HEAD)" remotes/origin/main -- charts | grep '[cC]hart.yaml' | sed -e 's#/[Cc]hart.yaml##g')"
+          for CHART_DIR in ${CHART_DIRS}; do
+            helm lint ${CHART_DIR}
+          done
+  schema-validation:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        k8s:
+          - v1.24.4
+          - v1.25.3
+          - v1.26.0
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Run kubeval
+        env:
+          KUBERNETES_VERSION: ${{ matrix.k8s }}
+        run: |-
+          CHART_DIRS="$(git diff --find-renames --name-only "$(git rev-parse --abbrev-ref HEAD)" remotes/origin/main -- charts | grep '[cC]hart.yaml' | sed -e 's#/[Cc]hart.yaml##g')"
+          KUBEVAL_VERSION="v0.16.1"
+          SCHEMA_LOCATION="https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master"
+          # install kubeval
+          echo -n "Downloading kubeval... "
+          curl --silent --show-error --fail --location --output /tmp/kubeval.tar.gz https://github.com/instrumenta/kubeval/releases/download/"${KUBEVAL_VERSION}"/kubeval-linux-amd64.tar.gz && echo "done" || "ERROR"
+          echo -n "Unpacking kubeval... "
+          tar -xf /tmp/kubeval.tar.gz kubeval && echo "done" || "ERROR"
+          # validate charts
+          # set "--ignore-missing-schemas" kubeval flag if you're using custom resource definitions
+          for CHART_DIR in ${CHART_DIRS}; do
+              echo && echo "Validating $CHART_DIR..."
+              helm template "${CHART_DIR}" | ./kubeval --strict --kubernetes-version "${KUBERNETES_VERSION#v}" --schema-location "${SCHEMA_LOCATION}" && echo "Validated $CHART_DIR" || "ERROR VALIDATING $CHART_DIR"
+          done
+  install-test:
+    needs:
+      - lint
+      - schema-validation
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        k8s:
+          - v1.24.4@sha256:ba6a8a1bc35139cc0947a9269a6db577cf7a6ba37cab8088fd04142546dc0c21
+          - v1.25.3@sha256:f1de3b0670462f43280114eccceab8bf1b9576d2afe0582f8f74529da6fd0365
+          - v1.26.0@sha256:3264cbae4b80c241743d12644b2506fff13dce07fcadf29079c1d06a47b399dd
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Set up Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: ${{ env.HELM_VERSION }}
+      - name: Create KIND cluster
+        uses: helm/kind-action@v1.3.0
+        with:
+          config: .github/kind.yaml
+          node_image: "kindest/node:${{ matrix.k8s }}"
+      - name: Install charts
+        run: |-
+          CHART_DIRS="$(git diff --find-renames --name-only "$(git rev-parse --abbrev-ref HEAD)" remotes/origin/main -- charts | grep '[cC]hart.yaml' | sed -e 's#/[Cc]hart.yaml##g')"
+          for CHART_DIR in ${CHART_DIRS}; do
+            dir=${CHART_DIR%*/}
+            chart_name="${dir##*/}"
+            echo "Installing chart '$chart_name'"
+            helm install $chart_name $dir && helm uninstall $chart_name 
+          done
