@@ -33,5 +33,5 @@ REDDIT_CLIENT_SECRET=<value>
 Run the services in docker:
 
 ```bash
-set -a; source .env && docker-compose up
+make up
 ```
