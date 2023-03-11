@@ -23,15 +23,20 @@ _none yet_
 
 ## Docker compose
 
-Set Reddit credentials in a `.env` file (required by the [dispatcher](https://github.com/flam-flam/dispatcher-service)):
+### Pre-requisites
+docker version `>=23.0.0`
 
-```env
-REDDIT_CLIENT_ID=<value>
-REDDIT_CLIENT_SECRET=<value>
-```
+#### Steps:
+1. Create new or obtain existing Reddit credentials (required by the [dispatcher](https://github.com/flam-flam/dispatcher-service))
+2. Create a `.env` file:
+    ```env
+    REDDIT_CLIENT_ID=<value>
+    REDDIT_CLIENT_SECRET=<value>
+    DISPATCHER_BRANCH=main
+    SUBMISSION_BRANCH=main
+    ```
 
-Run the services in docker:
-
-```bash
-set -a; source .env && docker-compose up
-```
+3. Run the services in docker:
+    ```bash
+    make up
+    ```

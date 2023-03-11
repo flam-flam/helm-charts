@@ -3,7 +3,7 @@ version: "3.1"
 
 services:
   dispatcher:
-    build: https://github.com/flam-flam/dispatcher-service.git#main
+    build: https://github.com/flam-flam/dispatcher-service.git#${DISPATCHER_BRANCH}
     image: dispatcher-service
     volumes:
       - ./dispatcher-config.json:/src/config.json
@@ -17,7 +17,7 @@ services:
 
   submission:
     build: 
-      context: https://github.com/flam-flam/submission-service.git#main:src
+      context: https://github.com/flam-flam/submission-service.git#${SUBMISSION_BRANCH}:src
       dockerfile: ./flamflam.SubmissionService/Dockerfile
     image: submission-service
     ports:
