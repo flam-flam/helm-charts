@@ -13,7 +13,16 @@ services:
       REDDIT_CLIENT_ID: ${REDDIT_CLIENT_ID}
       REDDIT_CLIENT_SECRET: ${REDDIT_CLIENT_SECRET}
     depends_on:
+      - comment
       - submission
+
+  comment:
+    build: https://github.com/flam-flam/comment-service.git#${COMMENT_BRANCH}
+    image: comment-service
+    ports:
+      - 8000:8000
+    networks:
+      - flam-flam
 
   submission:
     build: 
