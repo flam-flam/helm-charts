@@ -33,6 +33,7 @@ docker version `>=23.0.0`
     REDDIT_CLIENT_ID=<value>
     REDDIT_CLIENT_SECRET=<value>
     DISPATCHER_BRANCH=main
+    COMMENT_BRANCH=main
     SUBMISSION_BRANCH=main
     ```
 
