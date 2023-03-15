@@ -35,6 +35,7 @@ docker version `>=23.0.0`
     MONGO_INITDB_ROOT_USERNAME=<value>
     MONGO_INITDB_ROOT_PASSWORD=<value>
     DISPATCHER_BRANCH=main
+    COMMENT_BRANCH=main
     SUBMISSION_BRANCH=main
     ```
 

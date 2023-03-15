@@ -5,6 +5,7 @@
 up: ## Start services defined in compose/docker-compose.yaml
 ##& Ensure you have the following set in your .env file:
 ###& DISPATCHER_BRANCH=main
+###& COMMENT_BRANCH=main
 ###& SUBMISSION_BRANCH=main
 	@docker compose -f compose/docker-compose.yaml up -d
 
@@ -18,6 +19,9 @@ test: ## Test a service from a given branch of its repo
 	echo "Specify a branch for the \033[32mdispatcher\033[0m service:"; \
 	read -p 'BRANCH: ' branch && \
 	echo DISPATCHER_BRANCH=$${branch} >> ./compose/test.env && \
+	echo "Specify a branch for the \033[32mcomment\033[0m service:"; \
+	read -p 'BRANCH: ' branch && \
+	echo COMMENT_BRANCH=$${branch} >> ./compose/test.env && \
 	echo "Specify a branch for the \033[32msubmission\033[0m service:"; \
 	read -p 'BRANCH: ' branch && \
 	echo SUBMISSION_BRANCH=$${branch} >> ./compose/test.env && \
