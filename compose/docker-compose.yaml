@@ -33,6 +33,28 @@ services:
       - 80:80
     networks:
       - flam-flam
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:6.0
+    restart: always
+    pull_policy: missing
+    environment:
+      MONGO_INITDB_DATABASE: flam
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    volumes:
+      - mongodb_data:/data/db
+      - mongodbconfig_data:/data/configdb
+    ports:
+      - 27017:27017
+    networks:
+      - flam-flam
+
+volumes:
+  mongodb_data:
+  mongodbconfig_data:
 
 networks:
   flam-flam:
