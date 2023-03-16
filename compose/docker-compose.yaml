@@ -45,8 +45,6 @@ services:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
     volumes:
-      - ./mongodb/comments.js:/docker-entrypoint-initdb.d/comments.js
-      - ./mongodb/submissions.js:/docker-entrypoint-initdb.d/submissions.js
       - mongodb_data:/data/db
       - mongodbconfig_data:/data/configdb
     ports:
