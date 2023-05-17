@@ -14,6 +14,17 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+secretName: dispatcher-service-secrets
+#### Secret to create manually:
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: dispatcher-service-secrets
+# type: Opaque
+# data:
+#   REDDIT_CLIENT_ID: <base64 encoded value>
+#   REDDIT_CLIENT_SECRET: <base64 encoded value>
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true

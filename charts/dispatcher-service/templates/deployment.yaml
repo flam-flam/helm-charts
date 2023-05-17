@@ -45,7 +45,17 @@ spec:
           #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-
+          env:
+            - name: REDDIT_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secretName }}
+                  key: REDDIT_CLIENT_ID
+            - name: REDDIT_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secretName }}
+                  key: REDDIT_CLIENT_SECRET
           volumeMounts:
             - name: dispatcher-config
               mountPath: /src/config.json
