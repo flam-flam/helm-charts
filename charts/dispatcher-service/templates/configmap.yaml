@@ -5,12 +5,5 @@ metadata:
   labels:
     {{- include "dispatcher-service.labels" . | nindent 4 }}
 data:
-  config.json: |
-    {
-        "debug": false,
-        "comment_endpoint": "http://comment-service:8080",
-        "submission_endpoint": "http://submission-service:8080",
-        "subreddits": [
-            "all"
-        ]
-    }
+  config.json: >-
+    {{ .Values.config | toJson }}

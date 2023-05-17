@@ -2,6 +2,9 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 ---
+nameOverride: ""
+fullnameOverride: ""
+
 replicaCount: 1
 
 image:
@@ -11,8 +14,15 @@ image:
   tag: ""
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+
+# this has the same structure as the dispatcher's config.json
+# and might present some issues in the future.
+config:
+  debug: false
+  comment_endpoint: "http://comment-service:8080"
+  submission_endpoint: "http://submission-service:8080"
+  subreddits:
+    - "all"
 
 secretName: dispatcher-service-secrets
 #### Secret to create manually:
