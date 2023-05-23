@@ -1,0 +1,71 @@
+# Default values for dispatcher-service.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+---
+nameOverride: ""
+fullnameOverride: ""
+
+replicaCount: 1
+
+image:
+  repository: ghcr.io/flam-flam/dispatcher-service
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+
+# this has the same structure as the dispatcher's config.json
+# and might present some issues in the future.
+config:
+  debug: false
+  comment_endpoint: "http://comment-service:8080"
+  submission_endpoint: "http://submission-service:8080"
+  subreddits:
+    - "all"
+
+secretName: dispatcher-service-secrets
+#### Secret to create manually:
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: dispatcher-service-secrets
+# type: Opaque
+# data:
+#   REDDIT_CLIENT_ID: <base64 encoded value>
+#   REDDIT_CLIENT_SECRET: <base64 encoded value>
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 64Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
