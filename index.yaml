@@ -1,0 +1,18 @@
+apiVersion: v1
+entries:
+  dispatcher-service:
+  - apiVersion: v2
+    appVersion: 0.5.0
+    created: "2023-05-23T18:47:52.415138655Z"
+    description: A Helm chart for flam-flam/dispatcher-service
+    digest: 975fa74cde0de801f90677656e8ad893f20166aac13f9514439a40430c3391aa
+    home: https://flam-flam.github.io
+    name: dispatcher-service
+    sources:
+    - https://github.com/flam-flam/dispatcher-service
+    - https://github.com/flam-flam/helm-charts/tree/main/charts/dispatcher-service
+    type: application
+    urls:
+    - https://github.com/flam-flam/helm-charts/releases/download/dispatcher-service-0.1.0/dispatcher-service-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-05-23T18:47:52.415145656Z"
