@@ -1,0 +1,10 @@
+apiVersion: v2
+name: mongodb
+description: A simple Helm chart for mongodb
+type: application
+version: 0.1.0
+appVersion: "6.0"
+
+home: https://flam-flam.github.io
+sources:
+  - https://github.com/flam-flam/helm-charts/tree/main/charts/mongodb
