@@ -64,6 +64,22 @@ Create the name of the service account to use
 {{/*
 Create the name of the mongodb secret to use/create
 */}}
-{{- define "mongodb.secretName" -}}
-{{- default (include "mongodb.fullname" .) .Values.secret.name }}
+{{- define "mongodb.secretNameRoot" -}}
+{{- $name := default (include "mongodb.fullname" .) .Values.secrets.root.name }}
+{{- printf "%s-%s" $name "root" }}
+{{- end }}
+
+{{/*
+Create the name of the mongodb secret to use/create
+*/}}
+{{- define "mongodb.secretNameSvc" -}}
+{{- $name := default (include "mongodb.fullname" .) .Values.secrets.svc.name }}
+{{- printf "%s-%s" $name "svc" }}
+{{- end }}
+
+{{/*
+Create the name of the service account to use
+*/}}
+{{- define "mongodb.initConfigName" -}}
+{{- printf "%s-%s" (include "mongodb.fullname" .) "init-config" }}
 {{- end }}

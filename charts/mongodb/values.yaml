@@ -9,9 +9,13 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-secret:
-  create: true
-  name: ""
+secrets:
+  root:
+    create: true
+    name: ""
+  svc:
+    create: true
+    name: ""
 
 persistence:
   claimName: local-path

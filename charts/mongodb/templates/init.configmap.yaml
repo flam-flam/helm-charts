@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "mongodb.initConfigName" . }}
+  labels:
+    {{- include "mongodb.labels" . | nindent 4 }}
+data:
+  svc-user.js: |
+    import { env } from 'node:process';
+
+    const databaseName = 'flam';
+    const rootUser = env.MONGO_INITDB_ROOT_USERNAME
+    const rootPass = env.MONGO_INITDB_ROOT_PASSWORD
+
+    db = db.getSiblingDB(databaseName)
+    db.createUser({
+      user: env.MONGO_INITDB_SVC_USERNAME,
+      pwd: env.MONGO_INITDB_SVC_PASSWORD,
+      roles: [{ role: 'readWrite', db: databaseName }],
+    });
+    db.createCollection('comments')
+    db.createCollection('submissions')

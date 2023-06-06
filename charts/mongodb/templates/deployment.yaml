@@ -36,12 +36,22 @@ spec:
             - name: MONGO_INITDB_ROOT_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "mongodb.secretName" . }}
+                  name: {{ include "mongodb.secretNameRoot" . }}
                   key: username
             - name: MONGO_INITDB_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "mongodb.secretName" . }}
+                  name: {{ include "mongodb.secretNameRoot" . }}
+                  key: password
+            - name: MONGO_INITDB_SVC_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "mongodb.secretNameSvc" . }}
+                  key: username
+            - name: MONGO_INITDB_SVC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "mongodb.secretNameSvc" . }}
                   key: password
           ports:
             - name: mongo
@@ -67,15 +77,24 @@ spec:
           #   periodSeconds: 20
           #   successThreshold: 1
           #   timeoutSeconds: 10
-          volumeMounts:
-            - name: "mongo-data-dir"
-              mountPath: "/data/db"
+          volumeMounts: 
+            - name: mongo-data-dir
+              mountPath: /data/db
+            - name: init-svc-user
+              mountPath: /docker-entrypoint-initdb.d/
+              readOnly: true
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
-        - name: "mongo-data-dir"
+        - name: mongo-data-dir
           persistentVolumeClaim:
             {{- toYaml .Values.persistence | nindent 14 }}
+        - name: init-svc-user
+          configMap:
+            name: {{ include "mongodb.initConfigName" . }}
+            items:
+            - key: svc-user.js
+              path: svc-user.js
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
