@@ -47,6 +47,25 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: MONGO_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.mongo.secret.name }}
+                  key: {{ .Values.mongo.secret.usernameKey }}
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.mongo.secret.name }}
+                  key: {{ .Values.mongo.secret.passwordKey }}
+            - name: MONGO_SERVER
+              value: {{ .Values.mongo.server }}
+            - name: MONGO_PORT
+              value: "{{ .Values.mongo.port }}"
+            - name: MONGO_CONNECTION_STRING
+              value: mongodb://$(MONGO_USERNAME):$(MONGO_PASSWORD)@$(MONGO_SERVER):$(MONGO_PORT)
+            - name: MONGO_DATABASE_NAME
+              value: flam
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
