@@ -25,6 +25,9 @@ spec:
       serviceAccountName: {{ include "dispatcher-service.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      dnsConfig:
+        nameservers:
+          - 8.8.8.8
       containers:
         - name: {{ .Chart.Name }}
           securityContext:

@@ -1,0 +1,11 @@
+apiVersion: v2
+name: comment-service
+description: A Helm chart for the comment service in flam-flam
+type: application
+version: 0.1.0
+appVersion: "0.3.0"
+
+home: https://flam-flam.github.io
+sources:
+  - https://github.com/flam-flam/comment-service
+  - https://github.com/flam-flam/helm-charts/tree/main/charts/comment-service
