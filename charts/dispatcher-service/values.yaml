@@ -32,8 +32,8 @@ secretName: dispatcher-service-secrets
 #   name: dispatcher-service-secrets
 # type: Opaque
 # data:
-#   REDDIT_CLIENT_ID: <base64 encoded value>
-#   REDDIT_CLIENT_SECRET: <base64 encoded value>
+#   REDDIT_CLIENT_ID: <echo -n "VALUE" | base64>
+#   REDDIT_CLIENT_SECRET: <echo -n "VALUE" | base64>
 
 serviceAccount:
   # Specifies whether a service account should be created
