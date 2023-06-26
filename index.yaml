@@ -29,4 +29,18 @@ entries:
     urls:
     - https://github.com/flam-flam/helm-charts/releases/download/dispatcher-service-0.1.0/dispatcher-service-0.1.0.tgz
     version: 0.1.0
-generated: "2023-06-26T17:08:10.503483257Z"
+  mongodb:
+  - apiVersion: v2
+    appVersion: "6.0"
+    created: "2023-06-26T20:07:03.876903064Z"
+    description: A simple Helm chart for mongodb
+    digest: 187682e80e184f3c2fb87d1842678ee01ddd07f402bef2ad6e8e539feabb10cf
+    home: https://flam-flam.github.io
+    name: mongodb
+    sources:
+    - https://github.com/flam-flam/helm-charts/tree/main/charts/mongodb
+    type: application
+    urls:
+    - https://github.com/flam-flam/helm-charts/releases/download/mongodb-0.1.0/mongodb-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-06-26T20:07:03.876910864Z"
