@@ -15,10 +15,10 @@ nameOverride: ""
 fullnameOverride: ""
 
 mongo:
-  server: mongodb
+  server: ""
   port: 27017
   secret:
-    name: mongodb-root
+    name: ""
     usernameKey: username
     passwordKey: password
 

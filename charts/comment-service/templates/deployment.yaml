@@ -51,15 +51,15 @@ spec:
             - name: MONGO_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.mongo.secret.name }}
+                  name: {{ include "comment-service.mongo-secret" . }}
                   key: {{ .Values.mongo.secret.usernameKey }}
             - name: MONGO_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.mongo.secret.name }}
+                  name: {{ include "comment-service.mongo-secret" . }}
                   key: {{ .Values.mongo.secret.passwordKey }}
             - name: MONGO_SERVER
-              value: {{ .Values.mongo.server }}
+              value: {{ include "comment-service.mongo-server" . }}
             - name: MONGO_PORT
               value: "{{ .Values.mongo.port }}"
             - name: MONGO_CONNECTION_STRING
