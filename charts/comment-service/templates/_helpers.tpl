@@ -60,3 +60,19 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+MongoDB server endpoint
+*/}}
+{{- define "comment-service.mongo-server" -}}
+{{- $defaultEndpoint := printf "%s-mongodb" .Release.Name -}}
+{{- default $defaultEndpoint .Values.mongo.server }}
+{{- end }}
+
+{{/*
+MongoDB secret
+*/}}
+{{- define "comment-service.mongo-secret" -}}
+{{- $defaultName := printf "%s-mongodb-root" .Release.Name -}}
+{{- default $defaultName .Values.mongo.secret.name }}
+{{- end }}
