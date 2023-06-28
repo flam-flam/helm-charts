@@ -1,0 +1,25 @@
+---
+apiVersion: v2
+name: flam-flam
+description: An umbrella chart for flam-flam services
+type: application
+version: 0.1.0
+appVersion: "0.0.0"
+
+home: https://flam-flam.github.io
+sources:
+  - https://github.com/flam-flam/dispatcher-service
+  - https://github.com/flam-flam/comment-service
+  - https://github.com/flam-flam/submission-service
+  - https://github.com/flam-flam/helm-charts/tree/main/charts/flam-flam
+
+dependencies:
+  - name: dispatcher-service
+    version: 0.2.0
+    repository: https://flam-flam.github.io/helm-charts
+  - name: comment-service
+    version: 0.2.0
+    repository: https://flam-flam.github.io/helm-charts
+  - name: mongodb
+    version: 0.1.0
+    repository: https://flam-flam.github.io/helm-charts
