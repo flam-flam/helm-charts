@@ -1,5 +1,20 @@
 apiVersion: v1
 entries:
+  comment-service:
+  - apiVersion: v2
+    appVersion: 0.3.0
+    created: "2023-06-28T08:25:24.69536279Z"
+    description: A Helm chart for the comment service in flam-flam
+    digest: b09b0490027e1189e38d76ec890aa350880c424246d90fa4c6517a310d4e18d9
+    home: https://flam-flam.github.io
+    name: comment-service
+    sources:
+    - https://github.com/flam-flam/comment-service
+    - https://github.com/flam-flam/helm-charts/tree/main/charts/comment-service
+    type: application
+    urls:
+    - https://github.com/flam-flam/helm-charts/releases/download/comment-service-0.1.1/comment-service-0.1.1.tgz
+    version: 0.1.1
   dispatcher-service:
   - apiVersion: v2
     appVersion: 0.6.0
@@ -43,4 +58,4 @@ entries:
     urls:
     - https://github.com/flam-flam/helm-charts/releases/download/mongodb-0.1.0/mongodb-0.1.0.tgz
     version: 0.1.0
-generated: "2023-06-26T20:07:03.876910864Z"
+generated: "2023-06-28T08:25:24.69537659Z"
