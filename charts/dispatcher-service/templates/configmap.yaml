@@ -5,5 +5,10 @@ metadata:
   labels:
     {{- include "dispatcher-service.labels" . | nindent 4 }}
 data:
-  config.json: >-
-    {{ .Values.config | toJson }}
+  config.json: |-
+    {
+      "debug": "{{ .Values.config.debug }}",
+      "comment_endpoint": "{{ include "dispatcher-service.comment-endpoint" . }}",
+      "submission_endpoint": "{{ include "dispatcher-service.submission-endpoint" . }}",
+      "subreddits": {{ .Values.config.subreddits | toJson }}
+    }

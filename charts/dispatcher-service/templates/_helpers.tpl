@@ -60,3 +60,15 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Endpoints to dispatch to
+*/}}
+{{- define "dispatcher-service.submission-endpoint" -}}
+{{- $defaultEndpoint := printf "http://%s-submission-service/api/submissions" .Release.Name -}}
+{{- default $defaultEndpoint .Values.config.submission_endpoint }}
+{{- end }}
+{{- define "dispatcher-service.comment-endpoint" -}}
+{{- $defaultEndpoint := printf "http://%s-comment-service:8000/api/comments" .Release.Name -}}
+{{- default $defaultEndpoint .Values.config.comment_endpoint }}
+{{- end }}
