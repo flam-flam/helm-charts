@@ -18,6 +18,20 @@ entries:
   dispatcher-service:
   - apiVersion: v2
     appVersion: 0.6.0
+    created: "2023-06-28T12:12:30.734442274Z"
+    description: A Helm chart for flam-flam/dispatcher-service
+    digest: 7c0eaed69936e1b42d630ff82229bfd6ea48bd87013301e57eb1031958c0eb61
+    home: https://flam-flam.github.io
+    name: dispatcher-service
+    sources:
+    - https://github.com/flam-flam/dispatcher-service
+    - https://github.com/flam-flam/helm-charts/tree/main/charts/dispatcher-service
+    type: application
+    urls:
+    - https://github.com/flam-flam/helm-charts/releases/download/dispatcher-service-0.2.0/dispatcher-service-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 0.6.0
     created: "2023-06-26T17:08:10.503471557Z"
     description: A Helm chart for flam-flam/dispatcher-service
     digest: e75f59ca1e13e3fa0db7c1da737db2664e1f8c8641f7e8d25829a5673b91117d
@@ -58,4 +72,4 @@ entries:
     urls:
     - https://github.com/flam-flam/helm-charts/releases/download/mongodb-0.1.0/mongodb-0.1.0.tgz
     version: 0.1.0
-generated: "2023-06-28T08:25:24.69537659Z"
+generated: "2023-06-28T12:12:30.734467576Z"
