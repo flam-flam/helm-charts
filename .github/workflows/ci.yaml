@@ -80,10 +80,11 @@ jobs:
       - name: Install charts
         run: |-
           CHART_DIRS="$(git diff --find-renames --name-only "$(git rev-parse --abbrev-ref HEAD)" remotes/origin/main -- charts | grep '[cC]hart.yaml' | sed -e 's#/[Cc]hart.yaml##g')"
+          echo $CHART_DIRS
           for CHART_DIR in ${CHART_DIRS}; do
             dir=${CHART_DIR%*/}
             chart_name="${dir##*/}"
-            echo "Installing chart '$chart_name'"
+            echo "Installing chart '$chart_name' in '$dir'"
             pwd
             ls -lash
             helm dependencies build
