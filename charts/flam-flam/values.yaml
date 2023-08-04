@@ -1,0 +1,30 @@
+---
+dispatcher-service:
+  secretName: reddit-auth
+
+comment-service:
+  {}
+
+mongodb:
+  persistence:
+    claimName: mongodb-data
+  secrets:
+    root:
+      create: true
+      name: ""
+    svc:
+      create: false
+
+extraManifests: []
+  ## e.g.:
+  # - apiVersion: v1
+  #   kind: PersistentVolumeClaim
+  #   metadata:
+  #     name: mongodb-data
+  #   spec:
+  #     storageClassName: standard # "standard" is for KIND
+  #     accessModes:
+  #       - ReadWriteOnce
+  #     resources:
+  #       requests:
+  #         storage: 1Gi

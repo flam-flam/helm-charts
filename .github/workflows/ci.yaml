@@ -79,10 +79,12 @@ jobs:
           node_image: "kindest/node:${{ matrix.k8s }}"
       - name: Install charts
         run: |-
+          helm repo add flam-flam https://flam-flam.github.io/helm-charts
           CHART_DIRS="$(git diff --find-renames --name-only "$(git rev-parse --abbrev-ref HEAD)" remotes/origin/main -- charts | grep '[cC]hart.yaml' | sed -e 's#/[Cc]hart.yaml##g')"
           for CHART_DIR in ${CHART_DIRS}; do
             dir=${CHART_DIR%*/}
             chart_name="${dir##*/}"
-            echo "Installing chart '$chart_name'"
+            echo "Installing chart '$chart_name' in '$dir'"
+            helm dependencies build $dir
             helm install $chart_name $dir && helm uninstall $chart_name 
           done
