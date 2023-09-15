@@ -5,8 +5,11 @@ dependencies:
 - name: comment-service
   repository: https://flam-flam.github.io/helm-charts
   version: 0.2.0
+- name: submission-service
+  repository: https://flam-flam.github.io/helm-charts
+  version: 0.1.0
 - name: mongodb
   repository: https://flam-flam.github.io/helm-charts
   version: 0.1.0
-digest: sha256:24567bd475971d2f554b3eae3734604b83e4f60aa690ea7a2b2e35b50f8dbc44
-generated: "2023-06-28T14:03:26.6823+01:00"
+digest: sha256:c713fc9797e215662260dce7465fac3c75e3f269e3bda5df28818a3bf0641ba3
+generated: "2023-09-15T13:31:57.193470424+01:00"
