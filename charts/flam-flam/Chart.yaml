@@ -3,7 +3,7 @@ apiVersion: v2
 name: flam-flam
 description: An umbrella chart for flam-flam services
 type: application
-version: 0.2.0
+version: 0.1.0
 appVersion: "0.0.0"
 
 home: https://flam-flam.github.io
