@@ -3,6 +3,20 @@ entries:
   comment-service:
   - apiVersion: v2
     appVersion: 0.3.0
+    created: "2023-09-15T12:30:43.781333781Z"
+    description: A Helm chart for the comment service in flam-flam
+    digest: 858be0565c80107b12a4599fe74aca4745d517cd48d74a5b2af1f367a9327a58
+    home: https://flam-flam.github.io
+    name: comment-service
+    sources:
+    - https://github.com/flam-flam/comment-service
+    - https://github.com/flam-flam/helm-charts/tree/main/charts/comment-service
+    type: application
+    urls:
+    - https://github.com/flam-flam/helm-charts/releases/download/comment-service-0.2.1/comment-service-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 0.3.0
     created: "2023-06-28T12:37:12.782936341Z"
     description: A Helm chart for the comment service in flam-flam
     digest: d312e4378875ad1a90d9b5b377a137b04d81f39e9926c2073e26cce5df22259b
@@ -113,4 +127,19 @@ entries:
     urls:
     - https://github.com/flam-flam/helm-charts/releases/download/mongodb-0.1.0/mongodb-0.1.0.tgz
     version: 0.1.0
-generated: "2023-08-04T13:23:38.668608181Z"
+  submission-service:
+  - apiVersion: v2
+    appVersion: 0.2.0
+    created: "2023-09-15T12:30:43.976755459Z"
+    description: A Helm chart for the submission service in flam-flam
+    digest: 0a40cce78794360b22e35e40ced683018810bd6b6a6456acb51b4c74ea293218
+    home: https://flam-flam.github.io
+    name: submission-service
+    sources:
+    - https://github.com/flam-flam/submission-service
+    - https://github.com/flam-flam/helm-charts/tree/main/charts/submission-service
+    type: application
+    urls:
+    - https://github.com/flam-flam/helm-charts/releases/download/submission-service-0.1.0/submission-service-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-09-15T12:30:43.976775859Z"
