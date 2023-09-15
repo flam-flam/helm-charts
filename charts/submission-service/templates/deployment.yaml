@@ -38,12 +38,12 @@ spec:
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           livenessProbe:
-            httpGet:
-              path: /
+            tcpSocket:
+              path: /api/health
               port: http
           readinessProbe:
-            httpGet:
-              path: /
+            tcpSocket:
+              path: /api/health
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
@@ -62,10 +62,12 @@ spec:
               value: {{ include "submission-service.mongo-server" . }}
             - name: MONGO_PORT
               value: "{{ .Values.mongo.port }}"
-            - name: MONGO_CONNECTION_STRING
+            - name: FlamFlamDb__ConnectionString
               value: mongodb://$(MONGO_USERNAME):$(MONGO_PASSWORD)@$(MONGO_SERVER):$(MONGO_PORT)
-            - name: MONGO_DATABASE_NAME
+            - name: FlamFlamDb__DatabaseName
               value: flam
+            - name: FlamFlamDb__SubmissionsCollectionName
+              value: submissions
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
