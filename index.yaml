@@ -159,6 +159,20 @@ entries:
   submission-service:
   - apiVersion: v2
     appVersion: 0.2.0
+    created: "2023-09-15T17:50:04.438969382Z"
+    description: A Helm chart for the submission service in flam-flam
+    digest: c4007e87d7f089e12abce38aedd74ef135c9e1f535968d90e007886ae5afc88d
+    home: https://flam-flam.github.io
+    name: submission-service
+    sources:
+    - https://github.com/flam-flam/submission-service
+    - https://github.com/flam-flam/helm-charts/tree/main/charts/submission-service
+    type: application
+    urls:
+    - https://github.com/flam-flam/helm-charts/releases/download/submission-service-0.1.1/submission-service-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 0.2.0
     created: "2023-09-15T12:30:43.976755459Z"
     description: A Helm chart for the submission service in flam-flam
     digest: 0a40cce78794360b22e35e40ced683018810bd6b6a6456acb51b4c74ea293218
@@ -171,4 +185,4 @@ entries:
     urls:
     - https://github.com/flam-flam/helm-charts/releases/download/submission-service-0.1.0/submission-service-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-15T12:34:37.812244534Z"
+generated: "2023-09-15T17:50:04.438990582Z"
