@@ -1,11 +1,11 @@
-# Default values for comment-service.
+# Default values for submission-service.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 ---
 replicaCount: 1
 
 image:
-  repository: ghcr.io/flam-flam/comment
+  repository: ghcr.io/flam-flam/submission
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
