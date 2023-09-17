@@ -2,7 +2,7 @@ apiVersion: v2
 name: mongodb
 description: A simple Helm chart for mongodb
 type: application
-version: 0.1.0
+version: 0.1.1
 appVersion: "6.0"
 
 home: https://flam-flam.github.io
