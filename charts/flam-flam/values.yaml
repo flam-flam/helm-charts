@@ -5,6 +5,9 @@ dispatcher-service:
 comment-service:
   {}
 
+submission-service:
+  {}
+
 mongodb:
   persistence:
     claimName: mongodb-data
@@ -13,7 +16,8 @@ mongodb:
       create: true
       name: ""
     svc:
-      create: false
+      create: true
+      name: ""
 
 extraManifests: []
   ## e.g.:

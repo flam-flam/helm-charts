@@ -3,7 +3,7 @@ apiVersion: v2
 name: flam-flam
 description: An umbrella chart for flam-flam services
 type: application
-version: 0.2.0
+version: 0.2.1
 appVersion: "0.0.0"
 
 home: https://flam-flam.github.io
@@ -18,11 +18,11 @@ dependencies:
     version: 0.2.0
     repository: https://flam-flam.github.io/helm-charts
   - name: comment-service
-    version: 0.2.0
+    version: 0.2.1
     repository: https://flam-flam.github.io/helm-charts
   - name: submission-service
-    version: 0.1.0
+    version: 0.1.1
     repository: https://flam-flam.github.io/helm-charts
   - name: mongodb
-    version: 0.1.0
+    version: 0.1.1
     repository: https://flam-flam.github.io/helm-charts
