@@ -89,6 +89,35 @@ entries:
   flam-flam:
   - apiVersion: v2
     appVersion: 0.0.0
+    created: "2023-09-17T19:23:05.600636854Z"
+    dependencies:
+    - name: dispatcher-service
+      repository: https://flam-flam.github.io/helm-charts
+      version: 0.2.0
+    - name: comment-service
+      repository: https://flam-flam.github.io/helm-charts
+      version: 0.2.1
+    - name: submission-service
+      repository: https://flam-flam.github.io/helm-charts
+      version: 0.1.1
+    - name: mongodb
+      repository: https://flam-flam.github.io/helm-charts
+      version: 0.1.1
+    description: An umbrella chart for flam-flam services
+    digest: d167662a259bda9b76534e85298bff1a12c220657cfb7e7718fd3a7f23b36dcb
+    home: https://flam-flam.github.io
+    name: flam-flam
+    sources:
+    - https://github.com/flam-flam/dispatcher-service
+    - https://github.com/flam-flam/comment-service
+    - https://github.com/flam-flam/submission-service
+    - https://github.com/flam-flam/helm-charts/tree/main/charts/flam-flam
+    type: application
+    urls:
+    - https://github.com/flam-flam/helm-charts/releases/download/flam-flam-0.2.1/flam-flam-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 0.0.0
     created: "2023-09-15T12:34:37.812227733Z"
     dependencies:
     - name: dispatcher-service
@@ -198,4 +227,4 @@ entries:
     urls:
     - https://github.com/flam-flam/helm-charts/releases/download/submission-service-0.1.0/submission-service-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-17T12:58:15.720059025Z"
+generated: "2023-09-17T19:23:05.600656955Z"
