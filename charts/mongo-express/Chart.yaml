@@ -1,0 +1,10 @@
+apiVersion: v2
+name: mongo-express
+description: A Helm chart for mongo-express
+type: application
+version: 0.1.0
+appVersion: "0.54.0"
+
+home: https://flam-flam.github.io
+sources:
+  - https://github.com/flam-flam/helm-charts/tree/main/charts/mongo-express
