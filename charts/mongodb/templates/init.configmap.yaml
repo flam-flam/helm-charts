@@ -6,17 +6,20 @@ metadata:
     {{- include "mongodb.labels" . | nindent 4 }}
 data:
   svc-user.js: |
-    import { env } from 'node:process';
+    const dbname = 'flam';
+    const rootUsername = process.env['MONGO_INITDB_ROOT_USERNAME']
+    const rootPassword = process.env['MONGO_INITDB_ROOT_PASSWORD']
+    const svcUsername = process.env['MONGO_INITDB_SVC_USERNAME']
+    const svcPassword = process.env['MONGO_INITDB_SVC_PASSWORD']
 
-    const databaseName = 'flam';
-    const rootUser = env.MONGO_INITDB_ROOT_USERNAME
-    const rootPass = env.MONGO_INITDB_ROOT_PASSWORD
-
-    db = db.getSiblingDB(databaseName)
+    db = db.getSiblingDB('admin');
+    db.auth(rootUsername, rootPassword);
     db.createUser({
-      user: env.MONGO_INITDB_SVC_USERNAME,
-      pwd: env.MONGO_INITDB_SVC_PASSWORD,
-      roles: [{ role: 'readWrite', db: databaseName }],
+      user: svcUsername,
+      pwd: svcPassword,
+      roles: [{ role: 'readWrite', db: dbname }],
     });
-    db.createCollection('comments')
-    db.createCollection('submissions')
+
+    db = db.getSiblingDB(dbname);
+    db.createCollection('comments');
+    db.createCollection('submissions');
