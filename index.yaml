@@ -171,6 +171,21 @@ entries:
     urls:
     - https://github.com/flam-flam/helm-charts/releases/download/flam-flam-0.1.0/flam-flam-0.1.0.tgz
     version: 0.1.0
+  mongo-express:
+  - apiVersion: v2
+    appVersion: 1.0.0-alpha.4
+    created: "2023-09-18T07:35:56.136758314Z"
+    description: A Helm chart for mongo-express
+    digest: f2ad0e1022c7ae9dfe06e250ce93f03fc5383dcce1f44364c20dcc9cb71abc3e
+    home: https://github.com/mongo-express/mongo-express
+    name: mongo-express
+    sources:
+    - https://github.com/mongo-express/mongo-express
+    - https://github.com/flam-flam/helm-charts/tree/main/charts/mongo-express
+    type: application
+    urls:
+    - https://github.com/flam-flam/helm-charts/releases/download/mongo-express-0.1.0/mongo-express-0.1.0.tgz
+    version: 0.1.0
   mongodb:
   - apiVersion: v2
     appVersion: "6.0"
@@ -227,4 +242,4 @@ entries:
     urls:
     - https://github.com/flam-flam/helm-charts/releases/download/submission-service-0.1.0/submission-service-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-17T19:23:05.600656955Z"
+generated: "2023-09-18T07:35:56.136785014Z"
