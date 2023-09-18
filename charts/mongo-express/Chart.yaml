@@ -3,8 +3,9 @@ name: mongo-express
 description: A Helm chart for mongo-express
 type: application
 version: 0.1.0
-appVersion: "0.54.0"
+appVersion: "1.0.0-alpha.4"
 
-home: https://flam-flam.github.io
+home: https://github.com/mongo-express/mongo-express
 sources:
+  - https://github.com/mongo-express/mongo-express
   - https://github.com/flam-flam/helm-charts/tree/main/charts/mongo-express
